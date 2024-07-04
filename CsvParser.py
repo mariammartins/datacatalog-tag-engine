@@ -63,7 +63,9 @@ class CsvParser:
 
 if __name__ == '__main__':
 
-    import google.auth, configparser
+    import google.auth
+    import configparser
+
     from google.auth import impersonated_credentials
     SCOPES = ['openid', 'https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/userinfo.email']
 

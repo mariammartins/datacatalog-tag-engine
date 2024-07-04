@@ -16,7 +16,7 @@ from google.api_core.client_info import ClientInfo
 from google.cloud import bigquery
 from google.cloud import storage
 from google.cloud import resourcemanager_v3
-import constants, configparser
+import constants
 
 USER_AGENT = 'cloud-solutions/datacatalog-tag-engine-v2'
 

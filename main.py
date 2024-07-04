@@ -2099,8 +2099,6 @@ def configure_tag_history():
         print('Error writing tag history settings to Firestore.')
         return jsonify({"status": "error", "message": "Error writing tag history settings to Firestore."}), 500
 
-configure_tag_history()
-
 @app.route("/create_static_asset_config", methods=['POST'])
 def create_static_asset_config():
 

@@ -12,11 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# import uuid
-# import pytz
-# import requests
-# import os
-# import configparser, difflib, hashlib
+import uuid
+import pytz
+import requests
+import os
+import configparser
+import hashlib
 from datetime import datetime
 from datetime import timedelta
 from google.api_core.gapic_v1.client_info import ClientInfo
@@ -26,7 +27,7 @@ from google.cloud.firestore_v1.base_query import FieldFilter
 import DataCatalogController as controller
 from common import log_error
 import ConfigType as ct
-# import constants
+import constants
 
 USER_AGENT = 'cloud-solutions/datacatalog-tag-engine-v2'
 
