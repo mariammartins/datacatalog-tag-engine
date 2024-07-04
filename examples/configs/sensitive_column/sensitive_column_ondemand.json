@@ -17,5 +17,5 @@
     "create_policy_tags": true,
     "taxonomy_id": "projects/tag-engine-develop/locations/us-central1/taxonomies/317244085807144487",
     "refresh_mode": "ON_DEMAND",
-    "refresh_unit": "hours"   
+    "refresh_unit": "hours"
 }

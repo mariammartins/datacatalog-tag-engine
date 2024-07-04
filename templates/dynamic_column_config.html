@@ -3,7 +3,7 @@
   <head>
     <title>Tag Engine for Data Catalog</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	   <div class="pagetitle">
 	   <h1>Create Config</h1>
@@ -16,12 +16,12 @@
  		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Type:</span> DYNAMIC_TAG_COLUMN</td></tr>
   	  </table>
 	   <h3>Tag Template Fields</h3>
- 	   
+
  		   <h5 style="width: 800px;">To include a field in your tag, click on the checkbox next to the field and enter a query expression in the text box. <br>
  			   <br>
  			   The query expression must be a <i>valid</i> select statement in BigQuery. It may contain filter, aggregate functions, joins, groupings, subqueries, etc. as long as it's a valid select statement. Please consult the documentation for example queries. <br><br>
- 			   
-			   
+
+
  		    Mandatory tag template fields are marked by <span style="color:red;">*</span> and are already checked for you.
  		    </h5>
 
@@ -52,26 +52,26 @@
 			   {% endfor %}
 			   </table>
 		   <p>&nbsp;</p>
-		   <h3>BigQuery Columns</h3>   
-	 	  
+		   <h3>BigQuery Columns</h3>
+
 	 		   <h5>Provide a BigQuery query that returns the set of columns you want to tag.</h5>
-	
+
 			<td>
 			<td><span style="color:red;">*</span> Included columns query:&nbsp;&nbsp;
 			<textarea name="included_columns_query" style="align-content:left; width: 600px; overflow:auto;">select ...
 			</textarea>
 			</td>
-			   
+
 			   <p>&nbsp;</p>
 			   <h3>BigQuery Tables</h3>
-		 	   
+
 		 		   <h5>Specify the URIs for the assets you want to tag. Wildcards are allowed in the table name. <br><br>
 					  Supported URI syntax: <br>
 					  bigquery/project/[PROJECT]/* <br>
 					  bigquery/project/[PROJECT]/dataset/[DATASET]/* <br>
 				      bigquery/project/[PROJECT]/dataset/[DATASET]/[TABLE] <br>
 				  </h5>
-			
+
 			    <table>
 			     <tr>
 			    <td><span style="color:red;">*</span> Included Tables URIs:&nbsp;&nbsp;
@@ -82,19 +82,19 @@
 			     <tr><td>&nbsp;</td></tr>
  				<tr>
  			    <td>&nbsp;Excluded Tables URIs:&nbsp;
-			    	  <input type="text" name="excluded_tables_uris" style="align-content:left; width: 700px; overflow:auto;"/>			 
+			    	  <input type="text" name="excluded_tables_uris" style="align-content:left; width: 700px; overflow:auto;"/>
 			    </td>
  		         </tr>
 		    </table>
 		        <p>&nbsp;</p>
 			   <h3>Scheduling Options</h3>
-		 	   
+
 		 		   <h5>If you choose the AUTO refresh mode, your tags will be scheduled for update based on your specified refresh frequency. <br>
 					   If you choose the ON-DEMAND refresh mode, your tags will <b>not</b> be scheduled for refresh (even if you specify a refresh frequency). <br>This mode is useful when you have tags that don't need to be updated or when you want to trigger the update from the API. <br><br>
 				   </h5>
-				
+
 			     <table>
-				<tr>	
+				<tr>
 			    <td><span style="color:red;">*</span> Refresh mode:&nbsp;<select name="refresh_mode" style="width: 100px;padding: 3px;">
   				  				<option value="AUTO" selected>AUTO</option>
   							   	<option value="ON-DEMAND">ON-DEMAND</option>
@@ -102,7 +102,7 @@
 			    </td>
 		         </tr>
 			     <tr><td>&nbsp;</td></tr>
-				<tr>	
+				<tr>
 			    <td>Refresh frequency:&nbsp;<input type="text" value="24" name="refresh_frequency" style="width: 30px;padding: 3px;">&nbsp;
 				    			  <select name="refresh_unit" style="width: 70px;padding: 3px;">
 								<option value="minutes">minutes</option>
@@ -111,10 +111,10 @@
 							  </select></td>
 		         </tr>
 		        </table>
-			    
+
 			<p>&nbsp;</p>
 		    <h3>Tag History Option:</h3>
-			
+
 		    <table>
 		    <tr><td>&nbsp;&nbsp;
 			{% if tag_history_option %}
@@ -124,7 +124,7 @@
 			{% endif %}
 		    </td></tr>
 		    </table>
-			    
+
 	         <p>&nbsp;</p>
 		        <table>
 		        <tr>
@@ -140,7 +140,7 @@
 
 			   {% for dict_field in fields %}
 			   	<input type="hidden" name="{{ dict_field['field_id'] }}_datatype" value="{{ dict_field['field_type'] }}">
-			    {% endfor %}	
+			    {% endfor %}
 
          </form>
     </body>

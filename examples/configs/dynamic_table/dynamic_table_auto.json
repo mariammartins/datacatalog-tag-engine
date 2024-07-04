@@ -52,5 +52,5 @@
     "excluded_tables_uris": "",
     "refresh_mode": "AUTO",
     "refresh_frequency": 5,
-    "refresh_unit": "minutes"  
+    "refresh_unit": "minutes"
 }

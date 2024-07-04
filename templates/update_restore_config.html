@@ -3,65 +3,65 @@
   <head>
     <title>Tag Engine</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	   <div class="pagetitle">
 	   <h1>Update Config</h1>
        </div>
-	   
+
   	  <table>
-  		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Id:</span> {{ config['config_uuid'] }}</td></tr> 
-  		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Status:</span> {{ config['config_status'] }}</td></tr> 
+  		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Id:</span> {{ config['config_uuid'] }}</td></tr>
+  		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Status:</span> {{ config['config_status'] }}</td></tr>
   		  <tr><td>&nbsp;<span style="color:#0b5394;">Config Type:</span> {{ config['config_type'] }}</td></tr>
   	  </table>
-	  
+
          <form method="post" action="/process_restore_config">
-			<h3>Source Details</h3>	
+			<h3>Source Details</h3>
 			<table>
 			<tr>
 		    <td>&nbsp;<span style="color:red;">*</span>&nbsp;Source Tag Template Id:&nbsp;</td>
 		    <td>
-			<input type="text" name="source_template_id" value="{{ config['source_template_id'] }}" style="width: 150px;padding: 3px;"/>			 
+			<input type="text" name="source_template_id" value="{{ config['source_template_id'] }}" style="width: 150px;padding: 3px;"/>
 		    </td>
 		    </tr>
 			<tr>
 		    <td>&nbsp;<span style="color:red;">*</span>&nbsp;Source Tag Template Project:&nbsp;</td>
 			<td>
-		    	  <input type="text" name="source_template_project" value="{{ config['source_template_project'] }}" style="width: 150px;padding: 3px;"/>			 
+		    	  <input type="text" name="source_template_project" value="{{ config['source_template_project'] }}" style="width: 150px;padding: 3px;"/>
 		    </td>
 		    </tr>
 			<tr>
 		    <td>&nbsp;<span style="color:red;">*</span>&nbsp;Source Tag Template Region:&nbsp;</td>
 			<td>
-		    	  <input type="text" name="source_template_region" value="{{ config['source_template_region'] }}" style="width: 150px;padding: 3px;"/>			 
+		    	  <input type="text" name="source_template_region" value="{{ config['source_template_region'] }}" style="width: 150px;padding: 3px;"/>
 		    </td>
 		    </tr>
 		    </table>
 			   <p>&nbsp;</p>
 			   <h3>Destination Details</h3>
-		   	<table> 
+		   	<table>
 		   	<tr>
 		       <td>&nbsp;<span style="color:red;">*</span>&nbsp;Target Tag Template Id:&nbsp;</td>
 			   <td>
-		       	  <input type="text" name="target_template_id" value="{{ config['target_template_id'] }}" style="width: 150px;padding: 3px;"/>			 
+		       	  <input type="text" name="target_template_id" value="{{ config['target_template_id'] }}" style="width: 150px;padding: 3px;"/>
 		       </td>
 		       </tr>
 		   	<tr>
 		       <td>&nbsp;<span style="color:red;">*</span>&nbsp;Target Tag Template Project:&nbsp;</td>
 			   <td>
-		       	  <input type="text" name="target_template_project" value="{{ config['target_template_project'] }}" style="width: 150px;padding: 3px;"/>			 
+		       	  <input type="text" name="target_template_project" value="{{ config['target_template_project'] }}" style="width: 150px;padding: 3px;"/>
 		       </td>
 		       </tr>
 		   	<tr>
 		       <td>&nbsp;<span style="color:red;">*</span>&nbsp;Target tag template region:&nbsp;</td>
 			   <td>
-		       	  <input type="text" name="target_template_region" value="{{ config['target_template_region'] }}" style="width: 150px;padding: 3px;"/>			 
+		       	  <input type="text" name="target_template_region" value="{{ config['target_template_region'] }}" style="width: 150px;padding: 3px;"/>
 		       </td>
 		       </tr>
 		       </table>
 				<p>&nbsp;</p>
 				<h3>Enter GCS Path to Export Files</h3>
-		 	   
+
 							    <table>
 						     <tr>
 						    <td><span style="color:red;">*</span>&nbsp;Location of metadata export file(s):&nbsp;&nbsp;
@@ -69,20 +69,20 @@
 
 						    	</td>
 						     </tr>
-					    </table>	   
- 		   	
+					    </table>
+
 			    <p>&nbsp;</p>
 				<h3>Tag History Option</h3>
 			    <table>
 			    <tr><td>
-				    {% if config['tag_history'] == True %} 
+				    {% if config['tag_history'] == True %}
 				    		ON
 				    {% else %}
 				         	OFF
-				    {% endif %}   
+				    {% endif %}
 			    </td></tr>
 			    </table>
-							
+
 	         <p>&nbsp;</p>
 		        <table>
 		        <tr>

@@ -4,8 +4,8 @@ export TAG_ENGINE_URL="https://tag-engine-api-eshsagj3ta-uc.a.run.app" # replace
 export IAM_TOKEN=$(gcloud auth print-identity-token)
 
 ####### tag template section #######
-# Note: tag templates are referenced by the unit tests. 
-# Create the tag templates before creating the tag configurations. 
+# Note: tag templates are referenced by the unit tests.
+# Create the tag templates before creating the tag configurations.
 
 export TEMPLATE_PROJECT="tag-engine-run"
 export TEMPLATE_REGION="us-central1"
@@ -23,7 +23,7 @@ cd datacatalog-tag-engine/
 
 ####### static tags #######
 
-# create config 
+# create config
 curl -X POST $TAG_ENGINE_URL/create_static_asset_config -d @examples/configs/static_asset/static_asset_auto_bq.json \
 	-H "Authorization: Bearer $IAM_TOKEN"
 
@@ -54,7 +54,7 @@ curl -i -X POST $TAG_ENGINE_URL/trigger_job \
 
 ####### sensitive tags #######
 
-# create config 
+# create config
 curl -X POST $TAG_ENGINE_URL/create_sensitive_column_config \
 	-d @examples/configs/sensitive_column/sensitive_column_auto.json \
 	-H "Authorization: Bearer $IAM_TOKEN"
@@ -66,7 +66,7 @@ curl -i -X POST $TAG_ENGINE_URL/trigger_job \
 
 ####### glossary tags #######
 
-# create config 
+# create config
 curl -X POST $TAG_ENGINE_URL/create_glossary_asset_config -d @examples/configs/glossary_asset/glossary_asset_ondemand_bq.json \
 	-H "Authorization: Bearer $IAM_TOKEN"
 
@@ -165,7 +165,7 @@ curl -i -X POST $TAG_ENGINE_URL/trigger_job \
 curl -X POST $TAG_ENGINE_URL/create_restore_config -d @examples/configs/restore/restore_column_tags.json \
 	-H "Authorization: Bearer $IAM_TOKEN"
 
-# trigger job 
+# trigger job
 curl -i -X POST $TAG_ENGINE_URL/trigger_job \
   -d '{"config_type":"RESTORE_TAG","config_uuid":"13bea024d56811ed95362762b95fd865"}' \
   -H "Authorization: Bearer $IAM_TOKEN"
@@ -211,7 +211,7 @@ curl -i -X POST $TAG_ENGINE_URL/delete_config \
 ####### Purge inactive configs #######
 curl -i -X POST $TAG_ENGINE_URL/purge_inactive_configs \
   -d '{"config_type":"ALL"}' \
-  -H "Authorization: Bearer $IAM_TOKEN" 
+  -H "Authorization: Bearer $IAM_TOKEN"
 
 ####### Testing with service account override #######
 
@@ -220,7 +220,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="private_key.json"
 
 # create config
 curl -X POST $TAG_ENGINE_URL/create_dynamic_table_config -d @examples/configs/dynamic_table/dynamic_dataset_non_default_service_account.json \
-	-H "Authorization: Bearer $IAM_TOKEN" 
+	-H "Authorization: Bearer $IAM_TOKEN"
 
 # trigger job
 curl -i -X POST $TAG_ENGINE_URL/trigger_job \

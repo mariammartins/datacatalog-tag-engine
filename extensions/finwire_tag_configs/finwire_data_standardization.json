@@ -10,6 +10,6 @@
     ],
     "included_uris": "bigquery/project/tag-engine-develop/dataset/finwire/FINWIRE*_CMP/industryID",
     "excluded_uris": "",
-    "refresh_unit": "ON_DEMAND" 
+    "refresh_unit": "ON_DEMAND"
 }
 

@@ -44,5 +44,5 @@
         }
     ],
     "included_assets_uris": "gs://discovery-area/sample_data/*",
-    "refresh_unit": "ON_DEMAND"  
+    "refresh_unit": "ON_DEMAND"
 }

@@ -17,7 +17,7 @@ from google.cloud import datacatalog
 import json
 
 def event_handler(request):
-    
+
     request_json = request.get_json()
     project = request_json['calls'][0][0].strip()
     region = request_json['calls'][0][1].strip()
@@ -28,31 +28,31 @@ def event_handler(request):
     try:
         policy_tag = main(project, region, dataset, table, column)
         return json.dumps({"replies": [policy_tag]})
-    
+
     except Exception as e:
         print("Exception caught: " + str(e))
-        return json.dumps({"errorMessage": str(e)}), 400 
-        
-        
-def main(project, region, dataset, table, column):        
-	
+        return json.dumps({"errorMessage": str(e)}), 400
+
+
+def main(project, region, dataset, table, column):
+
     bq_client = bigquery.Client(project=project, location=region)
     ptm_client = datacatalog.PolicyTagManagerClient()
-    
+
     table_id = f'{project}.{dataset}.{table}'
-    table_ref = bq_client.get_table(table_id) 
+    table_ref = bq_client.get_table(table_id)
     table_schema = table_ref.schema
 
     for field in table_schema:
         if field.name == column:
             if field.policy_tags != None:
                 policy_tag = field.policy_tags.names[0]
-           
+
                 get_request = datacatalog.GetPolicyTagRequest(name=policy_tag)
                 resp = ptm_client.get_policy_tag(request=get_request)
                 policy_tag = resp.display_name
                 break
         else:
             policy_tag = None
-            
+
     return policy_tag

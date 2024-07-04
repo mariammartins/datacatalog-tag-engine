@@ -16,5 +16,5 @@
     "included_tables_uris": "bigquery/project/data-mesh-343422/dataset/crm/*",
     "create_policy_tags": true,
     "taxonomy_id": "projects/data-mesh-344315/locations/us-central1/taxonomies/1764167272388511191",
-    "refresh_unit": "ON_DEMAND"  
+    "refresh_unit": "ON_DEMAND"
 }

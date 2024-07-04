@@ -24,11 +24,11 @@ from airflow.utils.dates import days_ago
 
 from google.cloud.dlp import DlpServiceClient
 
-DLP_PROJECT = 'your-project' # project for running DLP 
+DLP_PROJECT = 'your-project' # project for running DLP
 DLP_REGION = 'global'
 DLP_TEMPLATE = 'projects/{dlp_project}/locations/{dlp_region}/inspectTemplates/{template_name}'
 
-BQ_PROJECT = 'your-project' # project for storing BQ data 
+BQ_PROJECT = 'your-project' # project for storing BQ data
 BQ_DATASET = 'your-dataset' # BQ dataset name with input data and for storing DLP results
 USER_EMAIL = 'username@gmail.com' # email for sending failure notifications
 
@@ -42,11 +42,11 @@ def create_dlp_job(index, **context):
   tables = ti.xcom_pull(task_ids='get_dataset_tables')
   table_dict = tables[index]
   table = table_dict['tableId']
-  
+
   dlp = DlpServiceClient()
 
   parent = 'projects/' + PROJECT_ID + '/locations/' + DLP_REGION
-  
+
   inspect_job_data = {
       'storage_config': {
           'big_query_options': {
@@ -84,7 +84,7 @@ def create_dlp_job(index, **context):
       response = dlp.create_dlp_job(parent=parent, inspect_job=inspect_job_data)
       print(response)
   except Exception as e:
-      print(e)  
+      print(e)
 
 def report_failure(context):
   send_email = email_operator.EmailOperator(
@@ -103,10 +103,10 @@ with models.DAG(dag_id='pii_classification_dag',
                 schedule_interval=None, default_args=DEFAULT_DAG_ARGS) as dag:
 
   get_dataset_tables = BigQueryGetDatasetTablesOperator(
-    task_id='get_dataset_tables', 
+    task_id='get_dataset_tables',
     dataset_id=DATASET,
     do_xcom_push=True
-  )  
+  )
 
   end_parallel_tasks = DummyOperator(task_id='end_parallel_tasks',retries=0)
 
@@ -120,9 +120,9 @@ with models.DAG(dag_id='pii_classification_dag',
         on_failure_callback=report_failure,
         retries=0
       ))
-    
+
       get_dataset_tables >> task_list[i] >> end_parallel_tasks
-  
+
   update_dynamic_tags = SimpleHttpOperator(
       task_id='update_dynamic_tags',
       method='POST',
@@ -130,6 +130,5 @@ with models.DAG(dag_id='pii_classification_dag',
                        INCLUDED_URIS}),
       endpoint='trigger_job'
   )
-      
+
   end_parallel_tasks >> update_dynamic_tags
-        

@@ -3,18 +3,18 @@
   <head>
     <title>Tag Engine</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
         {% if missing_permissions == True %}
     		<table><tr><td><span style="color:red;">Opps! You're missing permissions on the service account below (e.g <i>roles/iam.serviceAccountUser</i>). Please check the service account and make sure you are authorized to use it. </span></td></tr></table><p>
     	{% endif %}
-		
+
 
         {% if tag_template_error == True %}
     		<table><tr><td><span style="color:red;">Opps! Tag Engine was unable to retrieve the tag template below. Please ensure that it exists and that you have permissions to it.</span></td></tr></table><p>
     	{% endif %}
-		
-	   <span style="color:#9d9a9a;"><h6>Tag Engine version: 2.2.9</h6></span> 
+
+	   <span style="color:#9d9a9a;"><h6>Tag Engine version: 2.2.9</h6></span>
 
 	   <div class="pagetitle">
 	   <h1>Tag Engine for Data Catalog</h1>
@@ -24,7 +24,7 @@
 	   </div>
 		   <h5>&nbsp;Choose an existing tag template to create, edit or view a tag configuration. <br>
 			   &nbsp;Configurations let you create and populate Data Catalog tags in bulk. <br>
-			   &nbsp;Note that each tag configuration is scoped to one and only one tag template. <br> 
+			   &nbsp;Note that each tag configuration is scoped to one and only one tag template. <br>
 			   &nbsp;Enter the tag template's id, project, and region. <br>
 		       &nbsp;Enter the service account you are authorized to use for creating Data Catalog tags.
 		  </h5>
@@ -54,8 +54,8 @@
  	   <div class="header">
  	   <h2>Export Tags</h2>
  	   </div>
- 		   <h5>&nbsp;Export all of your Data Catalog tags into BigQuery tables. 
-			   <br>&nbsp;Choose which tags to export using a list of projects or a folder. 
+ 		   <h5>&nbsp;Export all of your Data Catalog tags into BigQuery tables.
+			   <br>&nbsp;Choose which tags to export using a list of projects or a folder.
  		   </h5>
 	   		<form method="post" action="/display_export_option">
  		    <table>
@@ -71,15 +71,15 @@
 	    <div class="header">
 	    <h2>Settings and Reports</h2>
 	    </div>
-	   <h5>&nbsp;Choose your default tag template and enable/disable tag history and tag stream. 
-		   <br>&nbsp;You can also configure a coverage report of all your tags across your data estate. 
+	   <h5>&nbsp;Choose your default tag template and enable/disable tag history and tag stream.
+		   <br>&nbsp;You can also configure a coverage report of all your tags across your data estate.
 	   </h5>
 	    &nbsp;<a href="{{ url_for('default_settings', saved=0) }}">Set Default Tag Template</a><br>
 	    &nbsp;<a href="{{ url_for('tag_history_settings') }}">View Tag History Settings</a><br>
 	    &nbsp;<a href="{{ url_for('coverage_report_settings', saved=0) }}">Configure Coverage Report</a><br>
 	    &nbsp;<a href="{{ url_for('coverage_report') }}">View Coverage Report</a><br>
 		&nbsp;<a href="{{ url_for('logout') }}">Logout</a><br>
-	    
+
 	    <p>&nbsp;</p>
 	    </body>
 </html>

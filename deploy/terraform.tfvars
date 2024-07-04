@@ -1,0 +1,8 @@
+tag_engine_project = "cdmc-gov-labs"
+firestore_project = "cdmc-gov-labs"
+firestore_database = "cdmc-firestore-db"
+bigquery_project = "cdmc-confdata-labs"
+tag_engine_sa = "cloud-run@cdmc-gov-labs.iam.gserviceaccount.com"
+tag_creator_sa = "tag-creator@cdmc-gov-labs.iam.gserviceaccount.com"
+queue_project = "cdmc-gov-labs"
+csv_bucket = "tag-imports-cdmc-labs"

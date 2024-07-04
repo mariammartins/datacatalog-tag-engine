@@ -10,7 +10,7 @@ import google.oauth2.id_token
 import argparse
 
 TAG_ENGINE_URL = 'https://tag-engine-eshsagj3ta-uc.a.run.app'
-CREDENTIAL_SCOPES = ["https://www.googleapis.com/auth/cloud-platform"] 
+CREDENTIAL_SCOPES = ["https://www.googleapis.com/auth/cloud-platform"]
 
 
 def get_id_token():
@@ -26,15 +26,15 @@ def read_config(id_token, config_uuid, config_type):
     auth_req = google.auth.transport.requests.Request()
     id_token = google.oauth2.id_token.fetch_id_token(auth_req, audience=TAG_ENGINE_URL)
     headers = {'Authorization': 'Bearer ' + id_token}
-    
+
     payload = {"config_uuid": config_uuid, "config_type": config_type}
     payload_json = json.dumps(payload)
-   
+
     response = requests.post(endpoint, headers=headers, data=payload_json)
     print(response.json())
-    
+
 if __name__ == '__main__':
-    
+
     id_token = get_id_token()
 
     parser = argparse.ArgumentParser(description="Reads a config from Firestore given a config_uuid and config_type.")
@@ -43,4 +43,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
     read_config(id_token, args.config_uuid, args.config_type)
 
-    

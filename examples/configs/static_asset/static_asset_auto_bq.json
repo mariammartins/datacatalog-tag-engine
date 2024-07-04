@@ -40,5 +40,5 @@
     "excluded_assets_uris": "",
     "refresh_mode": "AUTO",
     "refresh_frequency": 24,
-    "refresh_unit": "hours"   
+    "refresh_unit": "hours"
 }

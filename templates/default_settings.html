@@ -3,14 +3,14 @@
   <head>
     <title>Tag Engine</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	    {% if settings == 1 %}
 	    <table><tr><td>
 	    &nbsp;<span style="color:green;">Settings Saved!</span>
          </td></tr></table><p>
 	    {% endif %}
-	    
+
 	   <div class="pagetitle">
 	   <h1>Tag Engine for Data Catalog</h1>
         </div>
@@ -18,10 +18,10 @@
 	   <h2>Default Settings</h2>
 	   </div>
 	   <span style="color:#9d9a9a;">
-		   <h6>&nbsp;Set your default tag template and service account preferences to avoid having to retype them each time into the text fields. 
+		   <h6>&nbsp;Set your default tag template and service account preferences to avoid having to retype them each time into the text fields.
 
 		   </h6>
-	   </span> 
+	   </span>
          <form method="post" action="/set_default_settings">
 		    <table>
 		        <tr>
@@ -42,10 +42,10 @@
 			   </tr>
 			   <tr>
 			    <td></td>
-			    <td>&nbsp;<input type="submit" value="Save Settings" name="submit" style="width: 160px;padding: 3px;"></td> 
+			    <td>&nbsp;<input type="submit" value="Save Settings" name="submit" style="width: 160px;padding: 3px;"></td>
 			  </tr>
 		    </table>
-           
+
          </form>
 	    <p>&nbsp;&nbsp;<a href="/home">Homepage</a></p>
     </body>

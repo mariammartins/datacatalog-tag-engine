@@ -27,17 +27,17 @@ triggers = {
 
 depends_on = [google_cloud_run_v2_service.api_service, google_cloud_run_v2_service.ui_service]
 }
-  
+
 # ************************************************************ #
 # Create the firestore indexes
 # ************************************************************ #
 
 resource "null_resource" "firestore_indexes" {
-  
+
   provisioner "local-exec" {
-    command = "python create_indexes.py ${var.firestore_project} ${var.firestore_database}"
+    command = "python3 create_indexes.py ${var.firestore_project} ${var.firestore_database}"
   }
-  
+
   depends_on = [google_firestore_database.create, null_resource.install_packages]
 }
-   
+

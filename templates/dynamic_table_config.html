@@ -3,7 +3,7 @@
   <head>
     <title>Tag Engine for Data Catalog</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	   <div class="pagetitle">
 	   <h1>Create Config</h1>
@@ -17,11 +17,11 @@
   	  </table>
 
 	   <h3>Tag Template Fields</h3>
- 	   
+
  		   <h5 style="width: 800px;">To include a field in your tag, click on the checkbox next to the field and enter a query expression in the text box. <br>
  			   <br>
  			   The query expression must be a <i>valid</i> select statement in BigQuery. It may contain filter, aggregate functions, joins, groupings, subqueries, etc. as long as it's a valid select statement. Please consult the documentation for example queries.<br>
- 			   
+
  		    <br><br>Mandatory fields are marked by <span style="color:red;">*</span>.
  		    </h5>
          <form method="post" action="/process_dynamic_table_config">
@@ -52,7 +52,7 @@
 			   </table>
 			   <p>&nbsp;</p>
 			   <h3>BigQuery Tables</h3>
-		 	   
+
 		 		   <h5>Specify one or more URIs to include in or exclude from your dynamic config. Wildcards are allowed in the table name. <br><br>
 					  Supported URI syntax: <br>
 					  bigquery/project/[PROJECT]/* <br>
@@ -69,7 +69,7 @@
 			     <tr><td>&nbsp;</td></tr>
  				<tr>
  			    <td>&nbsp;Excluded Tables URIs:&nbsp;
-			    	  <input type="text" name="excluded_tables_uris" style="align-content:left; width: 700px; overflow:auto;"/>			 
+			    	  <input type="text" name="excluded_tables_uris" style="align-content:left; width: 700px; overflow:auto;"/>
 			    </td>
  		         </tr>
 		    </table>
@@ -81,7 +81,7 @@
 				   </h5>
 
 			     <table>
-				<tr>	
+				<tr>
 			    <td><span style="color:red;">*</span> Refresh Mode:&nbsp;<select name="refresh_mode" style="width: 100px;padding: 3px;">
   				  				<option value="AUTO" selected>AUTO</option>
   							   	<option value="ON-DEMAND">ON-DEMAND</option>
@@ -89,7 +89,7 @@
 			    </td>
 		         </tr>
 			     <tr><td>&nbsp;</td></tr>
-				<tr>	
+				<tr>
 			    <td>Refresh Frequency:&nbsp;<input type="text" value="24" name="refresh_frequency" style="width: 30px;padding: 3px;">&nbsp;
 				    			  <select name="refresh_unit" style="width: 70px;padding: 3px;">
 								<option value="minutes">minutes</option>
@@ -98,11 +98,11 @@
 							  </select></td>
 		         </tr>
 		        </table>
-				
+
 				<p>&nbsp;</p>
 
 			    <h3>Tag History Option:</h3>
-				
+
 			    <table>
 			    <tr><td>&nbsp;&nbsp;
 				{% if tag_history_option %}
@@ -128,7 +128,7 @@
 
 			   {% for dict_field in fields %}
 			   	<input type="hidden" name="{{ dict_field['field_id'] }}_datatype" value="{{ dict_field['field_type'] }}">
-			    {% endfor %}	
+			    {% endfor %}
 
          </form>
     </body>

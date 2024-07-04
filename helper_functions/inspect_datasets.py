@@ -23,15 +23,15 @@ def create_dataset(region, project, dataset):
     success = True
     dataset_id = bigquery.Dataset(project + '.' + dataset)
     dataset_id.location = region
-    
+
     try:
-        dataset_status = bq_client.create_dataset(dataset_id, exists_ok=True)  
+        dataset_status = bq_client.create_dataset(dataset_id, exists_ok=True)
         print("Created dataset {}".format(dataset_status.dataset_id))
-        
+
     except Exception as e:
         print('Error occurred in create_dataset ', dataset_id, '. Error message: ', e)
         success = False
-        
+
     return success, dataset_id
 
 
@@ -40,9 +40,9 @@ def inspect(region, inspect_project, inspect_datasets, result_project, result_da
     bq_client = bigquery.Client(project=inspect_project)
     inspect_datasets_list = inspect_datasets.split(',')
     result_datasets_list = result_datasets.split(',')
-    
+
     for index, inspect_dataset in enumerate(inspect_datasets_list):
-        tables = bq_client.list_tables(inspect_project + '.' + inspect_dataset.strip()) 
+        tables = bq_client.list_tables(inspect_project + '.' + inspect_dataset.strip())
 
         for table in tables:
             print("scanning {}.{}.{}".format(table.project, table.dataset_id, table.table_id))
@@ -50,7 +50,7 @@ def inspect(region, inspect_project, inspect_datasets, result_project, result_da
             start_job(region, inspect_project, inspect_dataset.strip(), table.table_id, result_project, result_datasets_list[index].strip())
 
 
-def start_job(region, inspect_project, inspect_dataset, table, result_project, result_dataset):    
+def start_job(region, inspect_project, inspect_dataset, table, result_project, result_dataset):
 
     inspect_job_data = {
         'storage_config': {
@@ -116,7 +116,7 @@ def start_job(region, inspect_project, inspect_dataset, table, result_project, r
                             'table_id': table
                         }
                     }
-                
+
                 },
             },
         ]
@@ -127,9 +127,9 @@ def start_job(region, inspect_project, inspect_dataset, table, result_project, r
     parent = 'projects/' + result_project + '/locations/' + region
     response = dlp_client.create_dlp_job(parent=parent, inspect_job=inspect_job_data)
     print(response)
-    
+
 if __name__ == '__main__':
-    
+
     parser = argparse.ArgumentParser(description="Creates a DLP inspection job for each table in a BQ dataset. Pass it one or more BQ datasets to inspect.")
     parser.add_argument('region', help='The Google Cloud region in which the BQ datasets are stored.')
     parser.add_argument('inspect_project', help='The Google Cloud Project ID in which the BQ datasets reside.')
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     parser.add_argument('result_project', help='The Google Cloud Project ID in which to write the DLP scan results.')
     parser.add_argument('result_datasets', help='The list of BQ datasets in which to write the DLP scan results.')
     args = parser.parse_args()
-    
+
     inspect(args.region, args.inspect_project, args.inspect_datasets, args.result_project, args.result_datasets)
 
 

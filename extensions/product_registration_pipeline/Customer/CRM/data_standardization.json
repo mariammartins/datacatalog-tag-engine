@@ -10,6 +10,6 @@
     ],
     "included_columns_query": "select 'c_tier'",
     "included_tables_uris": "bigquery/project/data-mesh-343422/dataset/crm/*",
-    "refresh_unit": "ON_DEMAND" 
+    "refresh_unit": "ON_DEMAND"
 }
 

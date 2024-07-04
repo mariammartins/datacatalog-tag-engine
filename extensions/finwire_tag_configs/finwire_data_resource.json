@@ -26,7 +26,7 @@
         {
             "field_id": "actual_data_latency",
             "query_expression": "select timestamp_diff(max(start_time), min(start_time), second) / (count(distinct(start_time)) - 1) from `$project`.`region-us-central1`.INFORMATION_SCHEMA.JOBS j1, unnest(referenced_tables) as r where statement_type in ('INSERT', 'UPDATE', 'DELETE') and r.project_id = '$project' and r.dataset_id = '$dataset' and r.table_id = '$table'"
-        }, 
+        },
         {
             "field_id": "global_id_customer",
             "query_expression": "select False"
@@ -46,5 +46,5 @@
     ],
     "included_uris": "bigquery/project/tag-engine-develop/dataset/finwire/*",
     "excluded_uris": "",
-    "refresh_unit": "ON_DEMAND" 
+    "refresh_unit": "ON_DEMAND"
 }

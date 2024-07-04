@@ -72,5 +72,5 @@
     ],
 	"mapping_table": "bigquery/project/tag-engine-develop/dataset/enterprise_glossary/mapping",
     "included_assets_uris": "bigquery/project/tag-engine-develop/dataset/data_source/farm",
-    "refresh_unit": "ON_DEMAND"  
+    "refresh_unit": "ON_DEMAND"
 }

@@ -25,8 +25,8 @@
         },
         {
             "field_id": "actual_data_latency",
-            "query_expression": "select round(safe_divide(delta, count)/60/60) from(select timestamp_diff(max(start_time), min(start_time), second) as delta, count(*) as count from `$project`.`region-us-central1`.INFORMATION_SCHEMA.JOBS where query like '%$project.$dataset.$table%')"			
-        }, 
+            "query_expression": "select round(safe_divide(delta, count)/60/60) from(select timestamp_diff(max(start_time), min(start_time), second) as delta, count(*) as count from `$project`.`region-us-central1`.INFORMATION_SCHEMA.JOBS where query like '%$project.$dataset.$table%')"
+        },
         {
             "field_id": "global_id_customer",
             "query_expression": "select False"
@@ -45,5 +45,5 @@
         }
     ],
     "included_tables_uris": "bigquery/project/data-mesh-343422/dataset/finwire/*",
-    "refresh_unit": "ON_DEMAND" 
+    "refresh_unit": "ON_DEMAND"
 }

@@ -3,7 +3,7 @@
   <head>
     <title>Tag Engine for Data Catalog</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	   <div class="pagetitle">
 	   <h1>Tag Engine for Data Catalog</h1>
@@ -13,13 +13,13 @@
 	   </div>
  	  <h5>
  	  <span style="color:red;">
- 	  Note: This config requires the <a href="https://github.com/GoogleCloudPlatform/datacatalog-templates/blob/master/file_template.yaml">file metadata</a> tag template. 
+ 	  Note: This config requires the <a href="https://github.com/GoogleCloudPlatform/datacatalog-templates/blob/master/file_template.yaml">file metadata</a> tag template.
  	   </span>
  	   </h5>
 	   <h3>Tag Template Fields</h3>
 	   <h5 style="width: 500px;">To include a field in the tag, click on the checkbox next to the field. The tag will be created with the selected fields. <br><br>
-	   
-	   Mandatory template fields are marked by <span style="color:red;">*</span> and are already checked for you. 
+
+	   Mandatory template fields are marked by <span style="color:red;">*</span> and are already checked for you.
 	   </h5>
          <form method="post" action="/process_entry_config">
 		    <table>
@@ -45,7 +45,7 @@
 			   </table>
 		    <p>&nbsp;</p>
 			   <h3>Google Cloud Storage Assets URIs</h3>
-		 	   
+
 			   <h5>
 			   Specify a comma-separated list of URIs for file paths to include in and exclude from your entry config. Wildcards are allowed in the path name. <br><br>
 					  Supported URIs for GCS files: <br>
@@ -63,19 +63,19 @@
 				     <tr><td>&nbsp;</td></tr>
 	 				<tr>
 	 			    <td>&nbsp;&nbsp;Excluded Assets URIs:&nbsp;
-				    	  <input type="text" name="excluded_assets_uris" style="align-content:left; width: 700px; overflow:auto;"/>			 
+				    	  <input type="text" name="excluded_assets_uris" style="align-content:left; width: 700px; overflow:auto;"/>
 				    </td>
 	 		         </tr>
 			    </table>
  		        <p>&nbsp;</p>
  			   <h3>Scheduling Options</h3>
- 		 	   
+
  		 		   <h5>If you choose the AUTO refresh mode, your entry config will be scheduled for updates based on your specified refresh frequency. <br>
- 					   If you choose the ON-DEMAND refresh mode, your entry config will <b>not</b> be scheduled for updates (even if you specify a refresh frequency). <br>The AUTO mode is helpful for registering and tagging new files on GCS on a recurring schedule. It will not re-register or re-tag existing files. <br><br> 
+ 					   If you choose the ON-DEMAND refresh mode, your entry config will <b>not</b> be scheduled for updates (even if you specify a refresh frequency). <br>The AUTO mode is helpful for registering and tagging new files on GCS on a recurring schedule. It will not re-register or re-tag existing files. <br><br>
  				   </h5>
- 				
+
  			     <table>
- 				<tr>	
+ 				<tr>
  			    <td><span style="color:red;">*</span> Refresh mode:&nbsp;<select name="refresh_mode" style="width: 100px;padding: 3px;">
    				  				<option value="AUTO" selected>AUTO</option>
    							   	<option value="ON-DEMAND">ON-DEMAND</option>
@@ -83,7 +83,7 @@
  			    </td>
  		         </tr>
  			     <tr><td>&nbsp;</td></tr>
- 				<tr>	
+ 				<tr>
  			    <td><span style="color:red;">*</span> Refresh frequency:&nbsp;<input type="text" value="24" name="refresh_frequency" style="width: 30px;padding: 3px;">&nbsp;
  				    			  <select name="refresh_unit" style="width: 70px;padding: 3px;">
 								<option value="minutes">minutes</option>
@@ -92,10 +92,10 @@
  							  </select></td>
  		         </tr>
  		        </table>
-			    
+
 			  <p>&nbsp;</p>
 			    <h3>Tag History Option:</h3>
-				
+
 			    <table>
 			    <tr><td>&nbsp;&nbsp;
 				{% if tag_history_option %}
@@ -105,7 +105,7 @@
 				{% endif %}
 			    </td></tr>
 			    </table>
-				
+
 	         <p>&nbsp;</p>
 		        <table>
 		        <tr>
@@ -118,10 +118,10 @@
 			   <input type="hidden" name="template_project" value="{{ template_project }}">
 			   <input type="hidden" name="template_region" value="{{ template_region }}">
 			   <input type="hidden" name="service_account" value="{{ service_account }}">
-			   
+
 			   {% for dict_field in fields %}
 			   	<input type="hidden" name="{{ dict_field['field_id'] }}_datatype" value="{{ dict_field['field_type'] }}">
-			    {% endfor %}	   
+			    {% endfor %}
          </form>
     </body>
 </html>

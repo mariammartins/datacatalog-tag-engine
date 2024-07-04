@@ -1,25 +1,25 @@
 variable "tag_engine_required_apis" {
 	type = list
 	description = "list of required GCP services"
-	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "cloudresourcemanager.googleapis.com", "cloudbuild.googleapis.com", "artifactregistry.googleapis.com", "datacatalog.googleapis.com", "run.googleapis.com"] 
+	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "cloudresourcemanager.googleapis.com", "cloudbuild.googleapis.com", "artifactregistry.googleapis.com", "datacatalog.googleapis.com", "run.googleapis.com"]
 }
 
 variable "firestore_required_apis" {
 	type = list
 	description = "list of required GCP services"
-	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "firestore.googleapis.com"] 
+	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "firestore.googleapis.com"]
 }
 
 variable "queue_required_apis" {
 	type = list
 	description = "list of required GCP services"
-	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "cloudtasks.googleapis.com"] 
+	default = ["cloudresourcemanager.googleapis.com", "iam.googleapis.com", "cloudtasks.googleapis.com"]
 }
 
 variable "tag_engine_project" {
     type = string
 	description = "project id in which to create the cloud run services, typically the data governance project. Make sure that it matches the same variable that you put in tagengine.ini."
-	default = "tag-engine-run"
+	# default = "tag-engine-run"
 }
 
 variable "tag_engine_region" {
@@ -31,7 +31,7 @@ variable "tag_engine_region" {
 variable "firestore_project" {
     type = string
 	description = "project id in which to create your firestore database. Make sure that it matches the same variable that you put in tagengine.ini."
-	default = "tag-engine-run"
+	# default = "tag-engine-run"
 }
 
 variable "firestore_region" {
@@ -43,13 +43,13 @@ variable "firestore_region" {
 variable "firestore_database" {
     type = string
 	description = "name of your firestore database. Make sure that it matches the same variable that you put in tagengine.ini."
-	default = "(default)"
+	# default = "(default)"
 }
 
 variable "bigquery_project" {
      type = string
 	 description = "project id in which your bigquery data assets reside"
-	 default = "tag-engine-develop"
+	#  default = "tag-engine-develop"
 }
 
 variable "bigquery_region" {
@@ -61,19 +61,19 @@ variable "bigquery_region" {
 variable "tag_engine_sa" {
      type = string
 	 description = "service account for running the tag engine cloud run service"
-	 default = "tag-engine@tag-engine-develop.iam.gserviceaccount.com"
+	#  default = "tag-engine@tag-engine-develop.iam.gserviceaccount.com"
 }
 
 variable "tag_creator_sa" {
      type = string
 	 description = "service account used by tag engine to create the tags in data catalog"
-	 default = "tag-creator@tag-engine-develop.iam.gserviceaccount.com"
+	#  default = "tag-creator@tag-engine-develop.iam.gserviceaccount.com"
 }
 
 variable "queue_project" {
      type = string
 	 description = "project in which to create the task queues. Make sure that it matches the same variable in tagengine.ini"
-	 default = "tag-engine-run"
+	#  default = "tag-engine-run"
 }
 
 variable "queue_region" {
@@ -85,17 +85,17 @@ variable "queue_region" {
 variable "injector_queue" {
      type = string
 	 description = "name of the task queue used for tracking job requests. Make sure that it matches the same variable in tagengine.ini"
-	 default = "tag-engine-injector-queue"
+	 default = "tag-engine-injector-queue-cdmc-test-2"
 }
 
 variable "work_queue" {
      type = string
 	 description = "name of the task queue used for tracking individual work items. Make sure that it matches the same variable that you put in tagengine.ini."
-	 default = "tag-engine-work-queue"
+	 default = "tag-engine-work-queue-cdmc-test-2"
 }
 
 variable "csv_bucket" {
      type = string
 	 description = "name of the gcs bucket which will be used to store the cvs data for tagging"
-	 default = "tag-imports"
+	#  default = "tag-imports"
 }

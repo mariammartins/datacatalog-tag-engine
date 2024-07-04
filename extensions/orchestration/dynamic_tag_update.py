@@ -20,8 +20,8 @@ TAG_TEMPLATE_ID = 'quality_template' # tag template id
 TAG_TEMPLATE_PROJECT = 'your-project' # project where above tag template is created
 TAG_TEMPLATE_REGION = 'us-central1' # region where above tag template is created
 
-BQ_PROJECT = 'your-project' # project where BQ data is stored 
-BQ_DATASET = 'your-dataset' # BQ dataset name 
+BQ_PROJECT = 'your-project' # project where BQ data is stored
+BQ_DATASET = 'your-dataset' # BQ dataset name
 INCLUDED_URIS = 'bigquery/project/{bq_project}/dataset/{bq_dataset}/*' # included uris field in Tag Engine
 
 USER_EMAIL = 'airflow@gmail.com' # email for sending failure notifications

@@ -11,7 +11,7 @@ resource "google_artifact_registry_repository" "image_registry" {
 # ************************************************************ #
 
 resource "null_resource" "build_api_image" {
-  
+
   triggers = {
     project_id = var.tag_engine_project
     region = var.tag_engine_region
@@ -45,11 +45,11 @@ resource "google_cloud_run_v2_service" "api_service" {
   location   = var.tag_engine_region
   name       = "tag-engine-api"
   project    = var.tag_engine_project
-  ingress    = "INGRESS_TRAFFIC_INTERNAL_ONLY" 
-  
+  ingress    = "INGRESS_TRAFFIC_INTERNAL_ONLY"
+
   template {
     service_account = var.tag_engine_sa
-	
+
 	scaling {
 	    min_instance_count = 0
 		max_instance_count = 5
@@ -57,7 +57,7 @@ resource "google_cloud_run_v2_service" "api_service" {
 
     containers {
         image = null_resource.build_api_image.triggers.full_image_path
-	  
+
 	    resources {
 	        limits = {
 	           memory = "4G"
@@ -78,7 +78,7 @@ output "api_service_uri" {
 # ************************************************************ #
 
 resource "null_resource" "build_ui_image" {
-  
+
   triggers = {
     project_id = var.tag_engine_project
     region = var.tag_engine_region
@@ -105,7 +105,7 @@ ${self.triggers.full_image_path} \
 --quiet
 EOF
   }
-  
+
   depends_on = [google_artifact_registry_repository.image_registry, google_project_service.tag_engine_project, google_project_iam_binding.storage_object_get, google_project_iam_binding.log_writer, google_project_iam_binding.repo_admin]
 }
 
@@ -113,11 +113,11 @@ resource "google_cloud_run_v2_service" "ui_service" {
   location   = var.tag_engine_region
   name       = "tag-engine-ui"
   project    = var.tag_engine_project
-  ingress    = "INGRESS_TRAFFIC_ALL"  
-  
+  ingress    = "INGRESS_TRAFFIC_ALL"
+
   template {
     service_account = var.tag_engine_sa
-	
+
 	scaling {
 	    min_instance_count = 0
 		max_instance_count = 5
@@ -125,7 +125,7 @@ resource "google_cloud_run_v2_service" "ui_service" {
 
     containers {
         image = null_resource.build_ui_image.triggers.full_image_path
-	  
+
 	    resources {
 	        limits = {
 	           memory = "4G"
@@ -146,7 +146,8 @@ data "google_iam_policy" "auth" {
   binding {
     role = "roles/run.invoker"
     members = [
-      "allUsers",  
+      "user:mariamartins@clsecteam.com",
+      "serviceAccount:cloud-run@cdmc-gov-labs.iam.gserviceaccount.com",
     ]
   }
 }
@@ -167,10 +168,10 @@ resource "null_resource" "set_env_var" {
  provisioner "local-exec" {
     command = "/bin/bash set_service_url.sh"
   }
-  
+
  triggers = {
     always_run = timestamp()
   }
-  
+
   depends_on = [google_cloud_run_v2_service.api_service, google_cloud_run_v2_service.ui_service]
 }

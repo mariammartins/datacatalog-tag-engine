@@ -29,5 +29,5 @@
     "excluded_tables_uris": "bigquery/project/tag-engine-develop/dataset/data_source/farm",
     "refresh_mode": "AUTO",
     "refresh_frequency": 24,
-    "refresh_unit": "hours"  
+    "refresh_unit": "hours"
 }

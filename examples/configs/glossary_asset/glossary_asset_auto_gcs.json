@@ -74,5 +74,5 @@
     "included_assets_uris": "gs://discovery-area/sample_data/*",
     "refresh_mode": "AUTO",
     "refresh_frequency": 24,
-    "refresh_unit": "hours"   
+    "refresh_unit": "hours"
 }

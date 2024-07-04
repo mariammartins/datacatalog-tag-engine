@@ -2,7 +2,7 @@
 # Create the two custom IAM roles (needed by the SENSITIVE_COLUMN_CONFIG type)
 # ************************************************** #
 
-resource "google_project_iam_custom_role" "bigquery_schema_update" {  
+resource "google_project_iam_custom_role" "bigquery_schema_update" {
   project            	= var.bigquery_project
   role_id              = "BigQuerySchemaUpdate"
   title                = "BigQuery Schema Update"
@@ -11,7 +11,7 @@ resource "google_project_iam_custom_role" "bigquery_schema_update" {
   depends_on = [google_project_service.tag_engine_project]
 }
 
-resource "google_project_iam_custom_role" "policy_tag_reader" {  
+resource "google_project_iam_custom_role" "policy_tag_reader" {
   project              = var.tag_engine_project
   role_id              = "PolicyTagReader"
   title                = "BigQuery Policy Tag Reader"
@@ -37,7 +37,7 @@ resource "google_project_iam_binding" "taskRunner" {
   members = ["serviceAccount:${var.tag_engine_sa}"]
   depends_on = [google_project_service.queue_project]
 }
-	 
+
 resource "google_project_iam_binding" "user" {
   project = var.firestore_project
   role    = "roles/datastore.user"
@@ -79,7 +79,7 @@ resource "google_project_iam_binding" "repo_admin" {
   members = ["serviceAccount:${var.tag_engine_sa}"]
   depends_on = [google_project_service.tag_engine_project]
 }
- 
+
 # ************************************************************ #
 # Create the project level policy bindings for tag_creator_sa
 # ************************************************************ #
@@ -90,7 +90,7 @@ resource "google_project_iam_binding" "tagEditor" {
   members = ["serviceAccount:${var.tag_creator_sa}"]
   depends_on = [google_project_service.tag_engine_project]
 }
-	
+
 resource "google_project_iam_binding" "tagTemplateUser" {
   project = var.tag_engine_project
   role    = "roles/datacatalog.tagTemplateUser"
@@ -125,7 +125,7 @@ resource "google_project_iam_binding" "jobUser" {
   members = ["serviceAccount:${var.tag_creator_sa}"]
   depends_on = [google_project_service.tag_engine_project]
 }
-	
+
 resource "google_project_iam_binding" "metadataViewer" {
   project = var.tag_engine_project
   role    = "roles/bigquery.metadataViewer"

@@ -3,35 +3,35 @@
   <head>
     <title>Tag Engine for Data Catalog</title>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>  
+  </head>
     <body>
 	    {% if status == -1 %}
 	    <table><tr><td>
 	    &nbsp;<span style="color:red;">Errors occurred while processing your config submission. Please check Firestore for details. </span>
          </td></tr></table><p>
 	    {% endif %}
-	    
+
  	   <div class="pagetitle">
  	   <h1>Tag Engine for Data Catalog</h1>
          </div>
  	   <div class="header">
 	    <h2>View Export Configs</h2>
 	   </div>
-	   
+
 	    <h5>
-		   {% if configs|length > 0 %} 
-		    	&nbsp;Click on <b>Edit Config</b> to overwrite a configuration. Click on <b>Delete Config</b> to delete a configuration.<br> 
+		   {% if configs|length > 0 %}
+		    	&nbsp;Click on <b>Edit Config</b> to overwrite a configuration. Click on <b>Delete Config</b> to delete a configuration.<br>
 				&nbsp;Note that deleting a configuration does <b>not</b> remove the exported tags from BigQuery.<br><br>
-				&nbsp;Mandatory tag template fields are marked by <span style="color:red;">*</span>. 
+				&nbsp;Mandatory tag template fields are marked by <span style="color:red;">*</span>.
 		   {% else %}
-		     &nbsp;&nbsp;<span style="color:grey;">You have no export configs in the system.</span> 
+		     &nbsp;&nbsp;<span style="color:grey;">You have no export configs in the system.</span>
 			 <p>&nbsp;&nbsp;<a href="{{ url_for('create_export_option') }}">Create an export config</a>&nbsp;&nbsp;<a href="/">Go back to home</a></p>
 		   {% endif %}
 	    </h5>
-         
+
 		    {% for config in configs %}
 		    <table style="background-color:#f1eeee" width="1000">
-			
+
 			<form method="post" action="/update_export_config">
 			<th>&nbsp;<input type="submit" value="Edit Config" name="action">
 			&nbsp;<input type="submit" value="Delete Config" name="action"></th>
@@ -40,7 +40,7 @@
 			{% if config['config_status'] != 'ACTIVE' and config['config_status'] != 'ERROR' %}
 				<a href="{{ url_for('view_export_configs') }}">refresh</a>
 			{% endif %}
-			</td></tr> 
+			</td></tr>
 			<tr><td>&nbsp;<span style="color:#0b5394;">Config Type:</span> {{ config['config_type'] }}</td></tr>
 			<tr><td>&nbsp;</td></tr>
 		    </table>
@@ -84,13 +84,13 @@
  		          <td>&nbsp;<span style="color:#0b5394;">Target region:</span>
  		           &nbsp;{{ config['target_region'] }}</td>
  	           </tr>
-			   
+
  		       <tr>
  		          <td>&nbsp;<span style="color:#0b5394;">Write option:</span>
  		           &nbsp;{{ config['write_option'] }}</td>
  	           </tr>
 		     	<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-		   
+
 		       <tr>
 		    	   <td>&nbsp;<span style="color:#0b5394;">Refresh mode:</span>
 			    	   &nbsp;{{ config['refresh_mode'] }}</td>
@@ -102,14 +102,14 @@
 				    &nbsp;{{ config['refresh_frequency'] }}&nbsp;{{ config['refresh_unit'] }}</td>
 		         </tr>
 				 <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
-			    {% endif %} 
-		     
+			    {% endif %}
+
 			 </table>
 		   <br>
 		   <input type="hidden" name="config_uuid" value="{{ config['config_uuid'] }}">
 		   </form>
 		   {% endfor %}
-		   {% if configs|length > 0 %} 
+		   {% if configs|length > 0 %}
     	   <p>&nbsp;&nbsp;<a href="{{ url_for('create_export_option') }}">Create export config</a>&nbsp;&nbsp;<a href="/">Go back to home</a></p>
 		   {% endif %}
     </body>

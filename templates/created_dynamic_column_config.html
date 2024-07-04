@@ -9,7 +9,7 @@
     &nbsp;<span style="color:red;">Errors occurred while processing your tag submission. Please check Firestore for details. </span>
       </td></tr></table><p>
     {% endif %}
-    
+
    <div id="container">
      <div class="pagetitle">
        <h1>Config Created</h1>
@@ -19,12 +19,12 @@
        <p>
           <span style="color:#0b5394;">Config Id:</span> {{ config_uuid }} <br>
 		  <span style="color:#0b5394;">Config Type:</span> {{ config_type }} <br><br>
-          
+
 		  <span style="color:#0b5394;">Tag Template Id</span>: {{ template_id }} <br>
           <span style="color:#0b5394;">Tag Template Project</span>: {{ template_project }} <br>
           <span style="color:#0b5394;">Tag Template Region</span>: {{ template_region }} <br>
 		<p>
-		<span style="color:#0b5394;">Tag Template Fields</span>: 
+		<span style="color:#0b5394;">Tag Template Fields</span>:
 		<table>
 		{% for field in fields: %}
           	<tr>
@@ -39,7 +39,7 @@
 		{{ included_columns_query }}
    		<p></p>
 		<span style="color:#0b5394;">Included Tables URIs</span>: <br>
-		{{ included_tables_uris }} 
+		{{ included_tables_uris }}
    		 <p></p>
  		<span style="color:#0b5394;">Excluded Tables URIs</span>: <br>
 		{% if excluded_tables_uris is not defined or excluded_tables_uris.isspace() or excluded_tables_uris == '' %}
@@ -61,14 +61,14 @@
 	    <h5>&nbsp;Click on Trigger Job to run this configuration.<br>
 	  	    &nbsp;Click on View Configs to see and edit all your configurations in Tag Engine.<br>
 	  	    &nbsp;Click on Return Home to go back to the initial landing page.<br>
-	     </h5> 
-	  	  <form method="post" action="/process_created_config_action">	   	  
+	     </h5>
+	  	  <form method="post" action="/process_created_config_action">
 	         <table>
 	         <tr>
 	     		<td><input type="submit" value="Trigger Job" name="action">
 	         	<input type="submit" value="View Existing Configs" name="action">
 	  			<input type="submit" value="Return Home" name="action">
-			
+
 			   <input type="hidden" name="template_id" value="{{ template_id }}">
 			   <input type="hidden" name="template_project" value="{{ template_project }}">
 			   <input type="hidden" name="template_region" value="{{ template_region }}">
@@ -77,7 +77,7 @@
 	  		   <input type="hidden" name="config_type" value="{{ config_type }}">
 	     		</td>
 	         </tr>
-	         </table>	
+	         </table>
 	  	  </p>
 	       </div>
 	     </div>

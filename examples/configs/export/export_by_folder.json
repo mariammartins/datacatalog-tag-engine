@@ -1,6 +1,6 @@
 {
     "source_folder": "29428042487",
-	"source_region": "us-central1", 
+	"source_region": "us-central1",
 	"target_project": "tag-engine-develop",
 	"target_dataset": "exports",
 	"target_region": "us-central1",

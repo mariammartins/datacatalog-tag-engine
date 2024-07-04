@@ -70,5 +70,5 @@
     ],
     "included_assets_uris": "bigquery/project/data-mesh-343422/dataset/marts",
     "excluded_assets_uris": "",
-    "refresh_unit": "ON_DEMAND"  
+    "refresh_unit": "ON_DEMAND"
 }

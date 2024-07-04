@@ -11,25 +11,25 @@
      </div>
      <div id="main">
 		  <span style="color:#0b5394;">Job Id:</span> {{ job_uuid }} <br>
-		  
+
 		  {% if job_status != 'SUCCESS' %}
-		  	  <span style="color:#0b5394;">Job Status:</span> {{ job_status }}&nbsp;&nbsp; 
+		  	  <span style="color:#0b5394;">Job Status:</span> {{ job_status }}&nbsp;&nbsp;
 		      <input type="submit" value="Refresh" name="action" style="width: 100px;padding: 3px;">
 		  {% else %}
 		  	  <span style="color:#0b5394;">Job Status:</span>
-			  <span style="color:green;"> {{ job_status }}</span>&nbsp;&nbsp; 
-		      
+			  <span style="color:green;"> {{ job_status }}</span>&nbsp;&nbsp;
+
 			  {% if config_type == 'TAG_EXPORT' %}
-			  <a href="https://console.cloud.google.com/bigquery?project={{ target_project }}&ws=!1m4!1m3!3m2!1s{{ target_project }}!2s{{ target_dataset }}" target="_blank">View Tables in BigQuery</a>	
+			  <a href="https://console.cloud.google.com/bigquery?project={{ target_project }}&ws=!1m4!1m3!3m2!1s{{ target_project }}!2s{{ target_dataset }}" target="_blank">View Tables in BigQuery</a>
 			  {% else %}
 			  	<a href="https://console.cloud.google.com/dataplex/search?project={{ template_project }}&q=tag:{{ template_project }}.{{ template_id }}" target="_blank">View Tags in Data Catalog</a>
 			  {% endif %}
-		  {% endif %}	  
+		  {% endif %}
 		  <br><br>
-		  
+
 		  <span style="color:#0b5394;">Config Id:</span> {{ config_uuid }} <br>
 	      <span style="color:#0b5394;">Config Type:</span> {{ config_type }} <br><br>
-	  
+
           <span style="color:#0b5394;">Tag Template Id</span>: {{ template_id }} <br>
           <span style="color:#0b5394;">Tag Template Project</span>: {{ template_project }} <br>
           <span style="color:#0b5394;">Tag Template Region</span>: {{ template_region }} <br>
@@ -39,9 +39,9 @@
 	    <table>
 		<tr><th style="text-align:left">Tail of Log Entries</th></tr>
 		  {% for entry in entries %}
-		  {% set timestamp, payload = entry %}	
+		  {% set timestamp, payload = entry %}
 	        <tr><td style="text-align:left">{{ timestamp }}&nbsp;&nbsp;</td><td>{{ payload }}</td></tr>
-	      {% endfor %} 
+	      {% endfor %}
 		</table>
 		<p></p>
 		<table><tr><td>

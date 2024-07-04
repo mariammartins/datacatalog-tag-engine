@@ -70,5 +70,5 @@
     ],
     "included_uris": "bigquery/project/tag-engine-develop/dataset/finwire",
     "excluded_uris": "",
-    "refresh_unit": "ON_DEMAND"  
+    "refresh_unit": "ON_DEMAND"
 }

@@ -34,5 +34,5 @@
     ],
     "included_assets_uris": "bigquery/project/warehouse-337221/dataset/austin_311_500k/*",
     "excluded_assets_uris": "",
-    "tag_history": false 
+    "tag_history": false
 }
