@@ -2980,6 +2980,7 @@ def trigger_job():
     print('enter trigger_job')
 
     json_request = request.get_json(force=True)
+
     print('json request: ', json_request)
 
     status, response, tag_creator_sa = do_authentication(request.headers, json_request, ENABLE_AUTH)
@@ -2989,6 +2990,7 @@ def trigger_job():
         return jsonify(response), 400
 
     tag_invoker_sa = get_tag_invoker_account(request.headers.get('Authorization'))
+
     print('tag_invoker_sa:', tag_invoker_sa)
 
     if 'config_type' in json_request:
@@ -3059,7 +3061,7 @@ def trigger_job():
                 template_id = store.lookup_tag_template(config_type, config_uuid)
 
                 credentials, success = get_target_credentials(tag_creator_sa)
-                bqu = bq.BigQueryUtils(credentials, 'US')
+                bqu = bq.BigQueryUtils(credentials, BIGQUERY_REGION)
                 success = bqu.write_job_metadata(job_uuid, template_id, job_metadata, tag_creator_sa, tag_invoker_sa)
                 print('Wrote job metadata to BigQuery for job', job_uuid, '. Success =', success)
 
